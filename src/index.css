@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================
+   Global base
+========================= */
+body {
+  @apply bg-slate-950 text-slate-100 font-sans;
+}
+
+/* Buttons: chỉ set những thứ an toàn (không đè padding/rounded ở component) */
+button {
+  @apply disabled:opacity-60 disabled:cursor-not-allowed;
+}
+
+/* =========================
+   UI Field (Option A)
+   - Chỉ áp khi bạn gắn class .ui-field / .ui-field-sm
+   - Tránh override layout trong component
+========================= */
+.ui-field {
+  @apply w-full bg-slate-900 border border-slate-800
+         rounded-2xl px-4 py-3 text-sm text-slate-100
+         outline-none focus:ring-2 focus:ring-indigo-500/30
+         focus:border-indigo-500/60;
+}
+
+.ui-field-sm {
+  @apply bg-slate-900 border border-slate-800
+         rounded-xl px-3 py-2 text-xs text-slate-100
+         outline-none focus:ring-2 focus:ring-indigo-500/30
+         focus:border-indigo-500/60;
+}
+
+/* Optional: placeholder đẹp hơn (không bắt buộc) */
+.ui-field::placeholder,
+.ui-field-sm::placeholder {
+  @apply text-slate-500;
+}
+
+/* =========================
+   Chrome autofill fix
+========================= */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px #020617 inset; /* nền tối */
+  -webkit-text-fill-color: #e5e7eb;                  /* chữ xám nhạt */
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+/* =========================
+   Scrollbar
+========================= */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #020617;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 999px;
+}
